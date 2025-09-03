@@ -1,0 +1,89 @@
+
+.single{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.single .wrapper {
+    max-width: 1366px;
+    margin-bottom: 30px;
+    padding:0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.single .wrapper .post{
+    height: auto;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+
+
+
+.single .wrapper img{
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    height: 400px;
+    object-fit: cover;
+}
+.single .wrapper .post .postTopbar h1{
+    font-family: 'Pacifico',cursive;
+    flex: 18;
+}
+.single .wrapper p{
+    padding: 5px;
+    font-family: 'Arvo',serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+
+    -webkit-box-orient: vertical;
+    line-height: 23px;
+
+}
+.single .wrapper .authorAndDate {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+
+}
+.single .wrapper .authorAndDate span:nth-child(1){
+    font-family: 'Dancing Script',cursive;
+    font-weight: 700;
+}
+.single .wrapper .authorAndDate span:nth-child(2){
+    font-family: 'Ubuntu Mono',monospace;
+    
+}
+
+
+
+
+.single .wrapper .post .postTopbar{
+    display: flex;
+    justify-content: center;
+
+}
+.single .wrapper .post .postTopbar button{
+    height: 1.5rem;
+    flex: 1.5;
+    display: flex;
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+.single .wrapper .post .postTopbar button:hover{
+   transform: scale(1.2);
+}
+.single .wrapper .post .postTopbar  i{
+   
+    font-size: 17px;
+
+}

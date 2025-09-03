@@ -1,0 +1,66 @@
+
+    <div class="logreg">
+        <img src="/img/background/login.jpg" alt="login">
+        <form id="login">
+            <div class="formGroup">
+                <input name="email" type="text" required>
+                <span>Email *</span>
+            </div>
+            
+            <div class="formGroup">
+                <input name="password" type="text" required>
+                <span>Password *</span>
+            </div>
+
+            <div class="btnGroup">
+                <a href="/register">Do you have an account?</a>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+        <div class="message">
+            <p id="loginMessage"></p>
+        </div>
+    </div>
+
+
+    <script>
+        const login = document.getElementById('login');
+        const loginMessage = document.getElementById('loginMessage');
+        const clearMessageForlogin=()=>{
+            setTimeout(()=>{
+                loginMessage.innerHTML=''
+            },1000*8)
+        }
+
+        login.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
+            fetch('/login', {
+                method: 'POST',
+                body: formData
+            }).then(response => response.json())
+            .then(res=>{
+                if(res.case){
+                    loginMessage.style.color='green'
+                    loginMessage.innerHTML=res.message
+
+                    setTimeout(()=>{
+                        window.location.href='/'
+                    },1000*3)
+                    
+
+                }
+                else{
+                    loginMessage.style.color='red'
+                    loginMessage.innerHTML=res.message
+                    clearMessageForlogin()
+                }
+            })
+        })
+        
+    </script>
+
+
+
+

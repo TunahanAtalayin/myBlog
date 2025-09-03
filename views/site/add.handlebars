@@ -1,0 +1,94 @@
+<div class="add">
+    <div class="message">
+        <p id="addFormMessage"></p>
+    </div>
+    <form id="addForm" action="/submit-post" method="POST" enctype="multipart/form-data">
+
+        <div class="topSide">
+
+            <div class="left">
+                <div class="text">
+                    <input type="text" placeholder="Your Title *" id="titleInput" name="titleContent">
+                    <textarea placeholder="Your Content *" id="contentInput" name="postContent"></textarea>
+                    <input type="text" placeholder="Your Name *" id="authorInput" name="authorContent">
+                </div>
+            </div>
+            <div class="right">
+                <div class="image">
+                    <span class="placeholder">Your image</span>
+                    
+                </div>
+
+            </div>
+        </div>
+        <div class="bottomSide">
+            <div class="button">
+                <button type="submit">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+                <label for="file">
+                    <i class="fa-solid fa-image"></i>
+                </label>
+                <input type="file" id="file" style="display: none;" name="file"><!-- 👈 görsel -->
+            </div>
+        </div>
+
+
+
+    </form>
+</div>
+
+
+<script>
+    const addForm = document.getElementById('addForm');
+    const addFormMessage = document.getElementById('addFormMessage');
+
+
+    //ekrandaiki mesajı silmek için
+    const clearMessageForAddForm = () => {
+        setTimeout(() => {
+            addFormMessage.innerHTML = ''
+        }, 1000 * 8)
+    }
+
+
+
+    addForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = new FormData(e.target);
+
+        fetch('/add', {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json())
+            .then(res => {
+                if (res.case) {
+                    addFormMessage.style.color = 'green'
+                    addFormMessage.innerHTML = res.message
+
+                    setTimeout(() => {
+                        window.location.href = '/'
+                    }, 1500)
+
+
+                }
+                else {
+                    addFormMessage.style.color = 'red'
+                    addFormMessage.innerHTML = res.message
+                    clearMessageForAddForm()
+                }
+            })
+    })
+    addForm.addEventListener("change", function (event) {
+        const file = event.target.files[0]; // seçilen dosya
+        const imageDiv = document.querySelector(".image");
+        const reader = new FileReader();
+        reader.readAsDataURL(file); // resmi base64'e çevir
+        reader.onload = function (e) {
+            imageDiv.innerHTML = `<img src="${e.target.result}" style="max-width: 300px; max-height: 300px;" />`;
+        };
+
+    });
+
+</script>

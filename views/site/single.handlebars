@@ -1,0 +1,54 @@
+<div class="single">
+    <div class="wrapper">
+        <div  class="post target">
+                     <div class="postTopbar">
+                        <h1>{{singleData.title}}</h1>
+                        <button type="button" class="deleteBtn" id="deleteBtn">
+                             <i class="fa-solid fa-trash"></i>
+                        </button>
+                        <button type="button" class="editButton" id="editButton">
+                             <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        
+                        
+                    </div>
+                    <img src="{{singleData.path}}" alt="content">
+                    <p>{{singleData.post}}</p>
+                    <div class="authorAndDate">
+                        <span>{{singleData.author}}</span>
+                        <span>{{singleData.date}}</span>
+                    </div> 
+                    
+               </div>
+        
+    </div>
+    <script>
+        const deleteBtn=document.getElementById('deleteBtn')
+        const editButton=document.getElementById('editButton')
+
+        deleteBtn.addEventListener('click',()=>{
+            let url =window.location.href;
+            url=url.split('single/')[1];
+            
+            fetch(`/single/${url}`,{
+                method:'delete'
+
+            }).then(response=>response.json())
+            .then((res)=>{
+
+                if(res.case){
+                    setTimeout(()=>{
+                        window.location.href='/'
+                    },1000*2)
+                }
+            })
+        })
+        editButton.addEventListener('click',()=>{
+            let url =window.location.href;
+            let id=url.split('single/')[1];
+            
+            
+            window.location.href=`/edit/${id}`
+        })
+        
+    </script>

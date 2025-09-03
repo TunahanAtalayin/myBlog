@@ -1,0 +1,103 @@
+.posts {
+    flex: 9;
+    margin-bottom: 30px;
+    padding:0 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.posts .post{
+    width: calc(50% - 20px);
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+
+
+
+.posts img{
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    height: 300px;
+    object-fit: cover   ;
+}
+.posts .post .postTopbar h1{
+    font-family: 'Pacifico',cursive;
+    flex: 18;
+}
+.posts p{
+    padding: 5px;
+    font-family: 'Arvo',serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height: 24px;
+
+}
+.posts .authorAndDate {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+
+}
+.posts .authorAndDate span:nth-child(1){
+    font-family: 'Dancing Script',cursive;
+    font-weight: 700;
+}
+.posts .authorAndDate span:nth-child(2){
+    font-family: 'Ubuntu Mono',monospace;
+    
+}
+
+/* Scroll Animation*/
+.posts .post{
+    transform: translateX(-20px);
+    opacity: 0;
+    transition: all 0.5s;
+}
+.posts .post:nth-child(2){
+    transition: 0.8s;
+}
+.posts .post.active{
+    transform: translateX(0px);
+    opacity: 1;
+}
+@media(max-width:1100px){
+  .posts .post{
+    width: 100%;
+
+   .posts .post:nth-child(2){
+    transition: 0.5s;
+}
+}  
+}
+
+.posts .post .postTopbar{
+    display: flex;
+    justify-content: center;
+
+}
+.posts .post .postTopbar button{
+    height: 1.5rem;
+    flex: 1.5;
+    display: flex;
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+.posts .post .postTopbar button:hover{
+   transform: scale(1.2);
+}
+.posts .post .postTopbar  i{
+   
+    font-size: 17px;
+
+}

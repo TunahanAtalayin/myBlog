@@ -1,0 +1,102 @@
+<div class="add">
+    <div class="message">
+        <p id="editFormMessage"></p>
+    </div>
+    <form id="editForm" action="/submit-post" method="POST" enctype="multipart/form-data">
+
+        <div class="topSide">
+
+            <div class="left">
+                <div class="text">
+                    <input type="text" value="{{data.title}}" placeholder="Your Title *" id="titleInput"
+                        name="titleContent">
+                    <textarea placeholder="Your Content *" id="contentInput" name="postContent">{{data.post}}</textarea>
+                    <input type="text" value="{{data.author}}" placeholder="Your Name *" id="authorInput"
+                        name="authorContent">
+                    <input type="password" value="{{data._id}}" name="id" style="display: none;">
+                </div>
+            </div>
+            <div class="right">
+                <div class="image">
+                    <span class=" placeholder">Your image</span>
+                    <img src="{{data.path}}" alt="">
+                </div>
+
+            </div>
+        </div>
+        <div class="bottomSide">
+            <div class="button">
+                <button type="submit">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+                <label for="file">
+                    <i class="fa-solid fa-image"></i>
+                </label>
+                <input type="file" id="file" style="display: none;" name="file">
+
+            </div>
+        </div>
+
+
+
+    </form>
+</div>
+
+
+<script>
+    const editForm = document.getElementById('editForm');
+    const editFormMessage = document.getElementById('editFormMessage');
+
+
+    //ekrandaiki mesajı silmek için
+    const clearMessageForeditForm = () => {
+        setTimeout(() => {
+            editFormMessage.innerHTML = ''
+        }, 1000 * 8)
+    }
+
+
+
+    editForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = new FormData(e.target);
+        fetch('/edit', {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json())
+            .then(res => {
+                if (res.case) {
+                    editFormMessage.style.color = 'green'
+                    editFormMessage.innerHTML = res.message
+
+                    setTimeout(() => {
+                        window.location.href = '/'
+                    }, 1500)
+
+
+                }
+                else {
+                    editFormMessage.style.color = 'red'
+                    editFormMessage.innerHTML = res.message
+                    clearMessageForeditForm()
+                }
+            })
+
+
+    })
+
+    editForm.addEventListener("change", function (event) {
+        
+        const file = event.target.files[0]; // seçilen dosya
+        const imageDiv = document.querySelector(".image");
+        const reader = new FileReader();
+        reader.readAsDataURL(file); // resmi base64'e çevir
+        reader.onload = function (e) {
+            imageDiv.innerHTML = `<img src="${e.target.result}" style="max-width: 300px; max-height: 300px;" />`;
+        };
+        
+    });
+   
+
+</script>

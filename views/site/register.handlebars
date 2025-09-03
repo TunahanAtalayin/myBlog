@@ -1,0 +1,68 @@
+
+    <div class="logreg">
+        <img src="/img/background/register.jpg" alt="register">
+        <form id="register">
+            <div class="formGroup">
+                <input name="email" type="text" required>
+                <span>Email *</span>
+            </div>
+
+            <div class="formGroup">
+                <input name="username" type="text" required>
+                <span>Username *</span>
+            </div>
+            <div class="formGroup">
+                <input name="password" type="text" required>
+                <span>Password *</span>
+            </div>
+
+            <div class="btnGroup">
+                <a href="/login">Don't you have an account</a>
+                <button type="submit">Register</button>
+            </div>
+        </form>
+        <div class="message">
+            <p id="registerMessage"></p>
+        </div>
+
+    </div>
+
+    <script>
+        const register = document.getElementById('register');
+        const registerMessage = document.getElementById('registerMessage');
+        const clearMessageForRegister=()=>{
+            setTimeout(()=>{
+                registerMessage.innerHTML=''
+            },1000*8)
+        }
+
+        register.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
+            fetch('/register', {
+                method: 'POST',
+                body: formData
+            }).then(response => response.json())
+            .then(res=>{
+                if(res.case){
+                    registerMessage.style.color='green'
+                    registerMessage.innerHTML=res.message
+
+                    setTimeout(()=>{
+                        window.location.href='/'
+                    },1000*3)
+                    
+
+                }
+                else{
+                    registerMessage.style.color='red'
+                    registerMessage.innerHTML=res.message
+                    clearMessageForRegister()
+                }
+            })
+        })
+        
+    </script>
+
+

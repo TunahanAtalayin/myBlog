@@ -1,0 +1,172 @@
+.add{
+    width: 100%;
+    height: calc(100vh - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.add form{
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    display: flex;
+    height: 600px;
+    width: 90%;
+    max-width: 1000px;
+    border-radius:10px ;
+    padding: 10px;
+    flex-direction: column;
+}
+.add form .image{
+    
+    width: 360px;
+    height: 360px;
+    display: flex; /* flex container olur */
+    justify-content: center; /* yatay hizalama */
+    align-items: center;
+    position: relative;
+    margin-top: 20px;
+    border-radius: 10%;
+    background-color: rgba(0, 0, 0, 0.06);
+    
+}
+.add form .topSide{
+    display: flex;
+    flex: 9;
+}
+.add form .topSide .right{
+    flex: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.add form .topSide .left{
+    flex: 6;
+    display: flex;
+   
+    justify-content: center;
+
+}
+.add form .bottomSide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    height: 100%;
+    flex: 1;
+    
+}
+
+.placeholder {
+    position: absolute;
+    text-align: center;
+    pointer-events: none;
+    font-family: 'Dancing Script',cursive ;
+    font-weight: 700;
+    font-size: 1.3rem;
+    z-index: 1;
+}
+.add form .topSide .right .image img{
+    max-width: 300px;
+    max-height: 300px;
+
+    object-fit:scale-down;
+    scale: 110%;
+    border-radius: 10%;
+    z-index: 2;
+
+}
+
+.add form .topSide .left .text{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center ;
+    width: 100%; 
+    height: 100%;
+    
+}
+.add form .text input,.add form .text textarea{
+    margin-bottom: 20px;
+    width: 90%;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+.add form .text textarea{
+    height: 360px;
+    padding-top: 20px;
+    padding: 20px;
+    font-family: 'Arvo',serif;
+    font-size: 1rem;
+}
+.add form .text input{
+    height: 40px;
+    padding-left: 20px;
+    font-size: 1.1rem;
+}
+.add form .text input:first-child{
+    font-family: 'Pacifico',cursive ;
+}
+.add form .text input:last-child{
+    font-family: 'Dancing Script',cursive ;
+    font-weight: 700;
+}
+.add form .button{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    
+}
+
+.add form .button button, .add form .button label{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    background-color: lightgreen;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+}
+.add form .button label{
+    background-color: rgb(220, 220, 110);
+}
+.add form .button label:hover{
+    transform: scale(1.2);
+}
+.add form .button button:hover{
+    transform: scale(1.2);
+}
+
+.add .message{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height:10px;
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 1;
+    transform: translateY(60px);
+
+}
+.add .message p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family: 'Josefin Sans',sans-serif;
+    color: white;
+    text-align: center;
+
+}
