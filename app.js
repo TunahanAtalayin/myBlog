@@ -56,7 +56,7 @@ const editPage= require(path.join(__dirname,'router','editPage.js'))
 
 app.use('/',(req,res,next)=>{
     const {userID}=req.session
-    req.session.userID='689c79851414b924b59f6ac7'
+    
     if(userID){
         res.locals.user=true
     }
